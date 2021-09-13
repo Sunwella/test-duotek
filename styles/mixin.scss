@@ -1,0 +1,18 @@
+$gridBreakpoints: (
+	xs: 0,
+	md: 768px,
+	lg: 992px
+);
+
+@mixin mediaUp($name, $breakpoints: $gridBreakpoints) {
+	$min: map-get($breakpoints, $name);
+	$min: if($min != 0, $min, null);
+
+	@if $min {
+		@media (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
